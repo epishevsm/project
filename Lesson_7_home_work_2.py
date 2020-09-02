@@ -1,6 +1,6 @@
 from abc import ABC, abstractmethod
 
-class Cloth():
+class Cloth(ABC):
 
 
     def __init__(self, size, height):
@@ -16,7 +16,9 @@ class Cloth():
     def total_textile(self):
         self.total = round(self.size / 6.5 + 0.5 ,2) + round(2 * self.height + 0.3, 2)
         return f'Общее количество ткани: {self.total}'
-
+    @abstractmethod
+    def __str__(self):
+        return f'Рост: {self.height}, Размер: {self.size}'
 
 class Coat(Cloth):
     def __init__(self, size):
@@ -37,6 +39,7 @@ class Suit(Cloth):
 class Total(Cloth):
     def __init__(self, size, height):
         super().__init__(size, height)
+
     def __str__(self):
         return f'Рост: {self.height}, Размер: {self.size}'
 
